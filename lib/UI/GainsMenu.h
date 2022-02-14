@@ -9,7 +9,8 @@
 
 #include <Arduino.h>
 #include "Widget.h"
-#include "InputBox.h"
+#include "IntInputBox.h"
+#include "FloatInputBox.h"
 #include "MenuItem.h"
 
 
@@ -19,11 +20,11 @@ public:
     void draw();
     void input();
     
-private:
+protected:
     
-    InputBox *inputgainbox;
-    InputBox *lockingainbox;
-    InputBox *outputgainbox;
+    IntInputBox *inputgainbox;
+    IntInputBox *lockingainbox;
+    FloatInputBox *outputgainbox;
     MenuItem *done;    
         
     int red,green,blue;

@@ -10,26 +10,26 @@
 
 #include <Widget.h>
 
+template <class T>
 class InputBox : public Widget {
 public:
-    InputBox(Widget *parent, const String label, int min, int max, int startvalue);
+    InputBox(Widget *parent, const String label, T min, T max, T step);
         
     void draw();
     void input();
 
     void claim_input();
     
-    int get_value();
-    void set_value(int val);
+    T get_value();
+    void set_value(T val);
     
-    static int numDigits(int number);
     
-private:
+protected:
     String label;
-    int max;
-    int min;    
-    int startvalue;
-    int value;    
+    T max;
+    T min;    
+    T step;
+    T value;    
 };
 
 #endif	/* INPUTBOX_H */

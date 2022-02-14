@@ -15,10 +15,10 @@ int Widget::num_widgets;
 
 Widget::Widget(NavButtons *buttons,U8G2 *u8g2) {
     this->buttons = buttons;
-    this->u8g2 = u8g2; 
+    this->u8g2 = u8g2;
     this->parent = this;   
-    this->ID = 0;
-    this->num_widgets = 0;
+    this->num_widgets +=1;
+    this->ID = num_widgets;    
     init();
 }
 
@@ -32,13 +32,19 @@ Widget::Widget(NavButtons *buttons,U8G2 *u8g2) {
  }
 
 void Widget::init() {
-    //Widget::has_input = this;
-    //Widget::is_drawn = this;
-    x = 0;
-    y = 0;
-    width = 0;
-    height = 0;   
+    this->width = u8g2->getWidth(); 
+    this->x = 0;
+    this->y = 0;
+    this->u8g2font = u8g2_font_6x10_mf;
+    this->fontheight = 10;
+    this->fontwidth = 6;
+    this->height = fontheight;   
 }
+
+void Widget::set_width(int width) {
+    this->width = width;
+}
+
 
 void Widget::set_pos(int x, int y) {
     this->x = x;
@@ -82,37 +88,6 @@ void Widget::switch_blink() {
 
 void Widget::switch_blinkfast() {
     blinkfast = !blinkfast;
-}
-
-String Widget::time2str(int hour,int minute) {
-	String h;
-	if (hour < 9) {
-		h = String(hour);
-		h = "0" + h;
-	} else {
-		h = String(hour);
-	}
-	String m;
-	if (minute < 9) {
-		m = String(minute);
-		m = "0" + m;
-	} else {
-		m = String(minute);
-	}
-	return h+":"+m;
-}
-
-String Widget::dec2str(int dec) {
-	if (dec < 99) {
-		String n;
-		if (dec < 10) {
-			n = String(dec);
-			n = "0" + n;
-		} else {
-			n = String(dec);
-		}
-		return n;
-	} else return String("na");
 }
 
 void Widget::draw() {

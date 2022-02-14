@@ -25,13 +25,17 @@ public:
     void claim_draw();
     
     void release_input(boolean pass_down = false);   
-        
+    
+    void set_width(int width);
+
     void set_pos(int x, int y);
     int get_x();
     int get_y();    
     
     int get_height();    
     
+    void set_font(uint8_t u8g2font, int font_height, int font_width);
+
     //function has to be called in main programm at a period of 500ms
     //it is used to let stuff on the display blink
     static void switch_blink();
@@ -45,8 +49,6 @@ public:
     static Widget *has_input;
     static Widget *is_drawn;      
 
-    static String time2str(int hour,int minute);
-    static String dec2str(int dec);
     
 protected:
     NavButtons *buttons;
@@ -56,7 +58,9 @@ protected:
     
     int x,y;
     int height,width;
-    
+    const uint8_t* u8g2font;
+    int fontheight, fontwidth;
+
     int ID;
     static int num_widgets;
     

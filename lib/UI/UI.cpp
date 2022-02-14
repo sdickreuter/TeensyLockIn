@@ -9,8 +9,7 @@ UI::UI(NavButtons *buttons, U8G2 *u8g2)
     this->u8g2 = u8g2;
 
     splash = new Splash(buttons, u8g2); 
-    splash->claim_draw(); 
-    splash->claim_input();
+
         
     // create Main Menu       
     LinkedList<String*> labels = LinkedList<String*>();
@@ -30,6 +29,9 @@ UI::UI(NavButtons *buttons, U8G2 *u8g2)
     main->add_target(1,splash);  
     main->add_target(2,splash);  
 
+
+    splash->claim_draw(); 
+    splash->claim_input();
 }
 
 

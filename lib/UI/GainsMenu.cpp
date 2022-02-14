@@ -13,17 +13,20 @@ Gains_Menu::Gains_Menu(Widget *parent): Widget(parent)
             
     active_item = 0;
     int i = 0;    
-    inputgainbox = new InputBox(this, "Input", 0, 100, red);
-    inputgainbox->set_pos(x+20,y+10+i*(inputgainbox->get_height()+4)-2);
+    inputgainbox = new IntInputBox(this, "Input", 0, 100, 1);
+    inputgainbox->set_value(red);
+    inputgainbox->set_pos(x+14,y+10+i*(inputgainbox->get_height()+4)-2);
     i++;
-    lockingainbox = new InputBox(this, "Lockin", 0, 100, green);
-    lockingainbox->set_pos(x+20,y+10+i*(lockingainbox->get_height()+4)-2);
+    lockingainbox = new IntInputBox(this, "Lockin", 0, 100, 1);
+    lockingainbox->set_value(green);
+    lockingainbox->set_pos(x+14,y+10+i*(lockingainbox->get_height()+4)-2);
     i++;
-    outputgainbox = new InputBox(this, "Gain", 0, 100, blue);
-    outputgainbox->set_pos(x+20,y+10+i*(outputgainbox->get_height()+4)-2);
+    outputgainbox = new FloatInputBox(this, "Gain", 0, 100, 1);
+    outputgainbox->set_value(blue);
+    outputgainbox->set_pos(x+14,y+10+i*(outputgainbox->get_height()+4)-2);
     i++;
     done = new MenuItem("Done", this);     
-    done->set_pos(x+20,y+10+i*(done->get_height()+4)-2);
+    done->set_pos(x+14,y+10+i*(done->get_height()+4)-2);
     //done->set_target(parent);
 }
 
@@ -41,23 +44,24 @@ void Gains_Menu::input(void) {
     if (active_item < 0) active_item = 3;
     active_item %= 4;    
     
-    if (this->buttons->press.risingEdge()) {
-        switch(active_item) {
-            case 0:
-                inputgainbox->claim_input();
-                break;
-            case 1:
-                lockingainbox->claim_input();
-                break;
-            case 2:
-                outputgainbox->claim_input();
-                break;
-            case 3:
+
+    switch(active_item) {
+        case 0:
+            inputgainbox->input();
+            break;
+        case 1:
+            lockingainbox->input();
+            break;
+        case 2:
+            outputgainbox->input();
+            break;
+        case 3:
+            if (this->buttons->press.risingEdge()) {
                 active_item = 0;
                 this->parent->claim_input();
                 this->parent->claim_draw();
                 break;            
-        }
+             }
     }
 
 }
@@ -74,22 +78,22 @@ void Gains_Menu::draw(void) {
     outputgainbox->draw();
     done->draw();
 
-    u8g2->setFont(u8g2_font_cu12_h_symbols);
+    u8g2->setFont(u8g2_font_twelvedings_t_all);
     switch(active_item) {
         case 0:
-            u8g2->setCursor(5,inputgainbox->get_y()+3);            
+            u8g2->setCursor(0,inputgainbox->get_y()+1);            
             break;
         case 1:
-            u8g2->setCursor(5,lockingainbox->get_y()+3);            
+            u8g2->setCursor(0,lockingainbox->get_y()+1);            
             break;
         case 2:
-            u8g2->setCursor(5,outputgainbox->get_y()+3);            
+            u8g2->setCursor(0,outputgainbox->get_y()+1);            
             break;
         case 3:
-            u8g2->setCursor(5,done->get_y()+3);            
+            u8g2->setCursor(0,done->get_y()+1);            
             break;            
     }
-    u8g2->print( (char) 104 );
+    u8g2->print( (char) 46 );
     
     red = inputgainbox->get_value() ;
     green = lockingainbox->get_value();

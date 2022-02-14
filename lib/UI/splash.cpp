@@ -25,7 +25,6 @@ void Splash::input(void)
     }  
 }
 
-
 void Splash::draw(void) {
    
     u8g2->setFont(u8g2_font_10x20_me);	// choose a suitable font

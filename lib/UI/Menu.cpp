@@ -16,7 +16,7 @@ Menu::Menu(Widget *parent, LinkedList<String*> *labels)
     MenuItem *item;
     for (int i = 0; i<labels->size(); i++) {
         item = new MenuItem(*labels->get(i), this); 
-        item->set_pos(x+20,y+10+i*(item->get_height()+4)-2);
+        item->set_pos(x+14,y+10+i*(item->get_height()+4)-2);
         children.add(item);
         item = 0;
     }    
@@ -50,8 +50,8 @@ void Menu::draw(void) {
         children.get(i)->draw();
     } 
 
-    u8g2->setFont(u8g2_font_cu12_h_symbols);
-    u8g2->setCursor(5,children.get(active_item)->get_y()+3);
-    u8g2->print((char) 104);    
+    u8g2->setFont(u8g2_font_twelvedings_t_all);
+    u8g2->setCursor(0,children.get(active_item)->get_y()+1);
+    u8g2->print((char) 46);    
 }
 

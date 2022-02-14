@@ -114,6 +114,7 @@ void toggletest() {
 Simpletimer timer_ui;
 
 void ui_callback() {
+  buttons->update();
   ui->input();
   ui->draw();
 }
@@ -186,7 +187,6 @@ void loop(void) {
     }
   }
   
-  buttons->update();
   timer_ui.run(10);
 
 
