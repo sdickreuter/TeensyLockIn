@@ -19,7 +19,7 @@ void Splash::set_target(Widget *target) {
 
 void Splash::input(void) 
 {   
-    if (buttons->press.risingEdge()) {
+    if (buttons->press.fallingEdge()) {
         target->claim_input();
         target->claim_draw();
     }  
@@ -27,13 +27,16 @@ void Splash::input(void)
 
 void Splash::draw(void) {
    
-    u8g2->setFont(u8g2_font_10x20_me);	// choose a suitable font
-    u8g2->drawStr(32,32,"HELLO!");
+    u8g2->setFont(u8g2_font_bubble_tr);
+    u8g2->drawStr(0,24,"Teensy");
+    u8g2->drawStr(0,48,"LockIn");
+    u8g2->setFont(u8g2_font_streamline_hand_signs_t);
+    u8g2->setCursor(128-21,64);
+    u8g2->print((char) 61);
 
     // draw blinking colon
     if (Widget::blink) {
             char buf[1];
-            u8g2->setFont(u8g2_font_open_iconic_all_2x_t);	// choose a suitable font
             buf[0] = 71;
             u8g2->drawStr(128-16,64,buf);
     }

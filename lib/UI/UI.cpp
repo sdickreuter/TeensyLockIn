@@ -14,8 +14,8 @@ UI::UI(NavButtons *buttons, U8G2 *u8g2)
     // create Main Menu       
     LinkedList<String*> labels = LinkedList<String*>();
     labels.add(new String("Set Gains"));
-    labels.add(new String("bla"));
-    labels.add(new String("blubb"));
+    labels.add(new String("Test"));
+    labels.add(new String("Run"));
     main = new Menu(splash,&labels);
     
         
