@@ -38,8 +38,8 @@ Gains_Menu::Gains_Menu(Widget *parent): Widget(parent)
  */
 void Gains_Menu::input(void) {
    
-    if (this->buttons->up.risingEdge()) active_item--;
-    if (this->buttons->down.risingEdge()) active_item++;
+    if (this->buttons->up.fallingEdge()) active_item--;
+    if (this->buttons->down.fallingEdge()) active_item++;
 
     if (active_item < 0) active_item = 3;
     active_item %= 4;    
@@ -56,7 +56,7 @@ void Gains_Menu::input(void) {
             outputgainbox->input();
             break;
         case 3:
-            if (this->buttons->press.risingEdge()) {
+            if (this->buttons->press.fallingEdge()) {
                 active_item = 0;
                 this->parent->claim_input();
                 this->parent->claim_draw();
