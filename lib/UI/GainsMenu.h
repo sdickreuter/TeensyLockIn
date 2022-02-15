@@ -9,8 +9,7 @@
 
 #include <Arduino.h>
 #include "Widget.h"
-#include "IntInputBox.h"
-#include "FloatInputBox.h"
+#include "AccFloatInputBox.h"
 #include "MenuItem.h"
 
 
@@ -19,15 +18,15 @@ public:
     Gains_Menu(Widget *parent);
     void draw();
     void input();
-    
+    float ingain,lockingain,outgain;
+
 protected:
     
-    IntInputBox *inputgainbox;
-    IntInputBox *lockingainbox;
-    FloatInputBox *outputgainbox;
+    AccFloatInputBox *inputgainbox;
+    AccFloatInputBox *lockingainbox;
+    AccFloatInputBox *outputgainbox;
     MenuItem *done;    
         
-    int red,green,blue;
     int active_item;     
 };
 

@@ -8,21 +8,25 @@
 
 Gains_Menu::Gains_Menu(Widget *parent): Widget(parent)
 {
+    ingain = 1.0;
+    lockingain = 1.0;
+    outgain = 1.0;
+
     x = 0;
     y = 5;
             
     active_item = 0;
     int i = 0;    
-    inputgainbox = new IntInputBox(this, "Input", 0, 100, 1);
-    inputgainbox->set_value(red);
+    inputgainbox = new AccFloatInputBox(this, "Input", 0.0, 100, 0.1);
+    inputgainbox->set_value(ingain);
     inputgainbox->set_pos(x+14,y+10+i*(inputgainbox->get_height()+4)-2);
     i++;
-    lockingainbox = new IntInputBox(this, "Lockin", 0, 100, 1);
-    lockingainbox->set_value(green);
+    lockingainbox = new AccFloatInputBox(this, "Lockin", 0.0, 100, 0.1);
+    lockingainbox->set_value(lockingain);
     lockingainbox->set_pos(x+14,y+10+i*(lockingainbox->get_height()+4)-2);
     i++;
-    outputgainbox = new FloatInputBox(this, "Gain", 0, 100, 1);
-    outputgainbox->set_value(blue);
+    outputgainbox = new AccFloatInputBox(this, "Gain", 0.0, 100, 0.1);
+    outputgainbox->set_value(outgain);
     outputgainbox->set_pos(x+14,y+10+i*(outputgainbox->get_height()+4)-2);
     i++;
     done = new MenuItem("Done", this);     
@@ -48,12 +52,15 @@ void Gains_Menu::input(void) {
     switch(active_item) {
         case 0:
             inputgainbox->input();
+            ingain = inputgainbox->get_value() ; 
             break;
         case 1:
             lockingainbox->input();
+            lockingain = inputgainbox->get_value() ; 
             break;
         case 2:
             outputgainbox->input();
+            outgain = inputgainbox->get_value() ; 
             break;
         case 3:
             if (this->buttons->press.fallingEdge()) {
@@ -94,8 +101,4 @@ void Gains_Menu::draw(void) {
             break;            
     }
     u8g2->print( (char) 46 );
-    
-    red = inputgainbox->get_value() ;
-    green = lockingainbox->get_value();
-    blue = outputgainbox->get_value();   
 }
