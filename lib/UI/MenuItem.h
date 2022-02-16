@@ -8,20 +8,18 @@
 #ifndef MENUITEM_H
 #define	MENUITEM_H
 
-#include "Widget.h"
+#include "Button.h"
 
-class MenuItem : public Widget {
+class MenuItem : public Button {
 public:
     MenuItem(Widget *target, String label, Widget *parent);
     MenuItem(String label, Widget *parent);
 
     void input();
-    void draw();
     
     void set_target(Widget *target);
     
 protected:
-    String label;
     Widget *target;
 };
 

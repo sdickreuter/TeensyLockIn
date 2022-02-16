@@ -8,18 +8,15 @@
 #include "MenuItem.h"
 
 MenuItem::MenuItem(Widget *target,String label, Widget *parent)
-    : Widget(parent) 
+    : Button(label, parent, nullptr) 
 {
-    this->label = label;
     this->target = target;
-    this->height = 10;
 }
 
 MenuItem::MenuItem(String label, Widget *parent)
-    : Widget(parent) 
+    : Button(label, parent, nullptr) 
 {
-    this->label = label;
-    this->height = 10;
+    this->target = target;
 }
 
 void MenuItem::set_target(Widget *target) {
@@ -32,19 +29,4 @@ void MenuItem::input(void)
         target->claim_input();
         target->claim_draw();
     }  
-}
-
-/*
- * function draw_clock()
- *
- * function for drawing the clock-face
- */
-void MenuItem::draw(void) 
-{    
-    u8g2->setCursor(x, y);
-        
-    u8g2->setFont(u8g2_font_6x10_mf);
-    
-    u8g2->print(label);   
-    
 }
