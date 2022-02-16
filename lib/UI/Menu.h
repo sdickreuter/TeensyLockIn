@@ -14,20 +14,23 @@
 
 class Menu : public Widget {
 public:
-    Menu(Widget *parent, LinkedList<String*> *labels);
-           
+    Menu(Widget *parent);
+    Menu(Widget *parent, LinkedList<Widget*> *widgets);
+       
     void draw();
     void input();
     
     void claim_input();
     
-    void add_target(int item, Widget *target);
-    
+    void add_MenuItem(String label, Widget *target);
+    void add_Widget(Widget *widget);
+ 
+
 private:
     int num_items;
     int active_item; 
     
-    LinkedList<MenuItem*> children; 
+    LinkedList<Widget*> children; 
 
 };
 

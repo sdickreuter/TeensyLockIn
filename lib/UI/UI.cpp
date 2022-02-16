@@ -1,5 +1,10 @@
 #include "UI.h"
 
+
+void donothing() {
+
+}
+
 /*
  * Constructor
  */
@@ -10,24 +15,27 @@ UI::UI(NavButtons *buttons, U8G2 *u8g2)
 
     splash = new Splash(buttons, u8g2); 
 
-        
     // create Main Menu       
-    LinkedList<String*> labels = LinkedList<String*>();
-    labels.add(new String("Set Gains"));
-    labels.add(new String("Test"));
-    labels.add(new String("Run"));
-    main = new Menu(splash,&labels);
-    
-        
+    main = new Menu(splash);
+    settings = new Menu(splash);
+
     // Create Special Menus
     gains = new Gains_Menu(main);
     
     // Set targets
     splash->set_target(main);
-    
-    main->add_target(0,gains);  
-    main->add_target(1,splash);  
-    main->add_target(2,splash);  
+
+    //populate menu
+    ToggleButton* runbutton = new ToggleButton("Run", main, &donothing);
+    main->add_Widget(runbutton);
+    main->add_MenuItem("Settings",settings);
+    main->add_MenuItem("Test Mode",splash);
+    main->add_MenuItem("Splash",splash);
+
+    settings->add_MenuItem("Set Gains",gains);
+    settings->add_MenuItem("Set Reference",gains);
+    settings->add_Widget(new Button("Save Settings", settings, &donothing));
+    settings->add_MenuItem("Back",main);
 
 
     splash->claim_draw(); 

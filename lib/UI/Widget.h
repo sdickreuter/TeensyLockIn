@@ -49,13 +49,12 @@ public:
     static Widget *has_input;
     static Widget *is_drawn;      
 
+    Widget *parent;   
     
 protected:
     NavButtons *buttons;
     U8G2 *u8g2; 
-   
-    Widget *parent;   
-    
+       
     int x,y;
     int height,width;
     const uint8_t* u8g2font;

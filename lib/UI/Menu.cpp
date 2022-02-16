@@ -7,15 +7,26 @@
 
 #include "Menu.h"
 
-Menu::Menu(Widget *parent, LinkedList<String*> *labels) 
+Menu::Menu(Widget *parent) 
     : Widget(parent) 
 {
-    children = LinkedList<MenuItem*>();
+    children = LinkedList<Widget*>();
     x = 0;
     y = 5;
-    MenuItem *item;
-    for (int i = 0; i<labels->size(); i++) {
-        item = new MenuItem(*labels->get(i), this); 
+    active_item = 0;
+    num_items = 0;
+}
+
+Menu::Menu(Widget *parent, LinkedList<Widget*> *widgets) 
+    : Widget(parent) 
+{
+    children = LinkedList<Widget*>();
+    x = 0;
+    y = 5;
+    Widget *item;
+    for (int i = 0; i<widgets->size(); i++) {
+        item = widgets->get(i);
+        item->parent = this;
         item->set_pos(x+14,y+10+i*(item->get_height()+4)-2);
         children.add(item);
         item = 0;
@@ -24,9 +35,22 @@ Menu::Menu(Widget *parent, LinkedList<String*> *labels)
     active_item = 0;    
 }
 
-void Menu::add_target(int item, Widget *target) {
-    MenuItem *buf = children.get(item);
-    buf->set_target(target);
+void Menu::add_MenuItem(String label, Widget *target)
+{
+    MenuItem *item;
+    item = new MenuItem(label, this); 
+    item->set_pos(x+14,y+10+num_items*(item->get_height()+4)-2);
+    item->set_target(target);
+    children.add(item);
+    num_items = children.size();
+}
+
+void Menu::add_Widget(Widget *widget)
+{
+    widget->set_pos(x+14,y+10+num_items*(widget->get_height()+4)-2);
+    //widget->parent = this;
+    children.add(widget);
+    num_items = children.size();
 }
 
 void Menu::claim_input() {

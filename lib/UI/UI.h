@@ -12,6 +12,7 @@
 
 #include "Widget.h"
 #include "Menu.h"
+#include "ToggleButton.h"
 #include "NavButtons.h"
 #include "splash.h"
 #include "GainsMenu.h"
@@ -27,8 +28,13 @@ class UI {
 
     Splash *splash;
     Menu *main; 
+    Menu *settings; 
     Gains_Menu *gains; 
-      
+    
+    //ToggleButton* runbutton;
+    //Button* but;
+
+
     U8G2 *u8g2;
     
     NavButtons *buttons;
