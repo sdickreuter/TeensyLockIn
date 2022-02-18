@@ -112,6 +112,9 @@ void toggletest() {
 }
 
 Simpletimer timer_ui;
+Simpletimer timer_blink;
+Simpletimer timer_blinkfast;
+
 
 void ui_callback() {
   buttons->update();
@@ -162,14 +165,17 @@ void setup(void) {
   u8g2.begin();
 
   timer_ui.register_callback(ui_callback);
+  timer_blink.register_callback(Widget::switch_blink);
+  timer_blinkfast.register_callback(Widget::switch_blinkfast);
+
 }
 
 elapsedMillis drawtime=0;
-int blink = 0;
-
 
 
 void loop(void) {
+  timer_blink.run(500);
+  timer_blinkfast.run(50);
 
   float lockval = 0.0;
   if ((inqueue1.available() > 1) && (inqueue2.available() > 1)) {
@@ -190,7 +196,6 @@ void loop(void) {
   timer_ui.run(10);
 
 
-
   /*
   inmixer.gain(0, ingain);
   ampsine1.gain(sinegain);
@@ -200,5 +205,4 @@ void loop(void) {
   amptest.gain(outgain);
   ampout.gain(outgain);
   */
-
 }

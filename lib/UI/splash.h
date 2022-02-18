@@ -20,8 +20,10 @@ public:
     void set_target(Widget *target);
 
 private:
-  
+    int timeout_counter;
     Widget *target;
+    uint32_t start_millis;
+    boolean freshlystarted;
 };
 
 #endif	/* SPLASH_H */

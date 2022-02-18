@@ -50,6 +50,7 @@ public:
     static Widget *is_drawn;      
 
     Widget *parent;   
+
     
 protected:
     NavButtons *buttons;
@@ -62,7 +63,7 @@ protected:
 
     int ID;
     static int num_widgets;
-    
+
 private:
     void init();
 };
