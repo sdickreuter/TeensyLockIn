@@ -16,6 +16,7 @@
 #include "NavButtons.h"
 #include "splash.h"
 #include "GainsMenu.h"
+#include "RefMenu.h"
 
 class UI {
   public:
@@ -29,8 +30,9 @@ class UI {
     Splash *splash;
     Menu *main; 
     Menu *settings; 
-    Gains_Menu *gains; 
-    
+    Gains_Menu *gains_menu; 
+    Ref_Menu *ref_menu;
+
     //ToggleButton* runbutton;
     //Button* but;
 
