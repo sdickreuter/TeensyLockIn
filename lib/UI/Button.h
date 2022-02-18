@@ -16,7 +16,7 @@ public:
 
     void input();
     void draw();
-    
+    void set_callback(void (*callback)());
     
 protected:
     String label;

@@ -30,11 +30,7 @@ Ref_Menu::Ref_Menu(Widget *parent): Widget(parent)
 }
 
 
-/*
- * function enc_clock()
- *
- * encoder assignment for clock-face
- */
+
 void Ref_Menu::input(void) {
    
     if (this->buttons->up.fallingEdge()) active_item--;

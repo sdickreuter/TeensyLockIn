@@ -15,6 +15,8 @@ UI::UI(NavButtons *buttons, U8G2 *u8g2)
 
     splash = new Splash(buttons, u8g2); 
 
+
+
     // create Main Menus       
     main = new Menu(splash);
     settings = new Menu(splash);
@@ -22,14 +24,17 @@ UI::UI(NavButtons *buttons, U8G2 *u8g2)
     gains_menu = new Gains_Menu(settings);
     ref_menu = new Ref_Menu(settings); 
 
+    // create Buttons
+    runbutton = new ToggleButton("Run", main, &donothing);
+    testbutton = new ToggleButton("Test Mode", main, &donothing);
+
     // Set targets
     splash->set_target(main);
 
     //populate menu
-    ToggleButton* runbutton = new ToggleButton("Run", main, &donothing);
     main->add_Widget(runbutton);
+    main->add_Widget(testbutton);
     main->add_MenuItem("Settings",settings);
-    main->add_MenuItem("Test Mode",splash);
     main->add_MenuItem("Splash",splash);
 
     settings->add_MenuItem("Set Gains",gains_menu);

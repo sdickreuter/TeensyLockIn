@@ -24,8 +24,6 @@ class UI {
     UI(NavButtons *buttons, U8G2 *u8g2);
     void draw();
     void input();
-       
-  private:
 
     Splash *splash;
     Menu *main; 
@@ -33,9 +31,10 @@ class UI {
     Gains_Menu *gains_menu; 
     Ref_Menu *ref_menu;
 
-    //ToggleButton* runbutton;
-    //Button* but;
+    ToggleButton *runbutton;
+    ToggleButton *testbutton;
 
+  private:
 
     U8G2 *u8g2;
     

@@ -19,47 +19,67 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI u8g2(U8G2_R0, SH1106_CS_pin, SH1106_DC_pin
 //U8G2_SH1106_128X64_NONAME_F_4W_SW_SPI u8g2(U8G2_R0, SH1106_CLK_pin, SH1106_DATA_pin, SH1106_CS_pin, SH1106_DC_pin, SH1106_RES_pin);
 
 
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
+
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
+
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
+
+
+#include <Audio.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <SerialFlash.h>
+
 // GUItool: begin automatically generated code
-AudioSynthWaveform       testwave;      //xy=75.33332824707031,157.33334350585938
-AudioInputI2S            linein;           //xy=78.33332824707031,82.33333587646484
-AudioSynthWaveformSine   sine1;          //xy=83.33332824707031,285.33331298828125
-AudioSynthWaveformSine   sine2;          //xy=83.33332824707031,372.33331298828125
-AudioAmplifier           ampsine1;           //xy=257.33331298828125,282.3333435058594
-AudioAmplifier           ampsine2;           //xy=264.33331298828125,371.33331298828125
-AudioMixer4              inmixer;         //xy=268.33331298828125,69.33333587646484
-AudioMixer4              testoutmixer;         //xy=281.33331298828125,598.3333129882812
-AudioPlayQueue           outqueue;         //xy=409.33331298828125,460.3333435058594
-AudioAmplifier           amptest;           //xy=457.33331298828125,609.3333129882812
-AudioEffectMultiply      multiply2;      //xy=469.33331298828125,246.33334350585938
-AudioEffectMultiply      multiply1;      //xy=470.33331298828125,130.33334350585938
-AudioAmplifier           amp1;           //xy=566.3333282470703,53.33332824707031
-AudioAmplifier           ampout;           //xy=566.3333129882812,501.3333435058594
-AudioAmplifier           amp2;           //xy=572.3333282470703,363.3333282470703
-AudioFilterBiquad        biquad2;        //xy=637.3333129882812,279.33331298828125
-AudioFilterBiquad        biquad1;        //xy=642.3333129882812,133.33334350585938
-AudioOutputI2S           lineout;           //xy=647.3333129882812,649.3333129882812
-AudioRecordQueue         inqueue1;         //xy=803.3333129882812,134.33334350585938
-AudioRecordQueue         inqueue2;         //xy=810.3333129882812,280.33331298828125
-AudioConnection          patchCord1(testwave, 0, testoutmixer, 0);
-AudioConnection          patchCord2(linein, 0, inmixer, 0);
-AudioConnection          patchCord3(sine1, ampsine1);
-AudioConnection          patchCord4(sine1, 0, testoutmixer, 1);
-AudioConnection          patchCord5(sine2, ampsine2);
-AudioConnection          patchCord6(ampsine1, 0, multiply1, 1);
-AudioConnection          patchCord7(ampsine2, 0, multiply2, 1);
-AudioConnection          patchCord8(inmixer, 0, multiply1, 0);
-AudioConnection          patchCord9(inmixer, 0, multiply2, 0);
-AudioConnection          patchCord10(testoutmixer, amptest);
-AudioConnection          patchCord11(outqueue, ampout);
-AudioConnection          patchCord12(amptest, 0, lineout, 1);
-AudioConnection          patchCord13(multiply2, amp2);
-AudioConnection          patchCord14(multiply1, amp1);
-AudioConnection          patchCord15(amp1, biquad1);
-AudioConnection          patchCord16(ampout, 0, lineout, 0);
-AudioConnection          patchCord17(amp2, biquad2);
-AudioConnection          patchCord18(biquad2, inqueue2);
-AudioConnection          patchCord19(biquad1, inqueue1);
+AudioInputI2S            linein;         //xy=103.33332824707031,114.99995422363281
+AudioSynthWaveform       testwave;       //xy=103.33332824707031,205.99993896484375
+AudioSynthWaveformSine   sine1; //xy=108.33332824707031,317.9999542236328
+AudioSynthWaveformSine   sine2; //xy=108.33332824707031,404.9999542236328
+AudioMixer4              inmixer;        //xy=293.3333282470703,101.99995422363281
+AudioMixer4              testoutmixer;   //xy=365.3333740234375,563.9999389648438
+AudioPlayQueue           outqueue;       //xy=414.33331298828125,451.9999084472656
+AudioEffectMultiply      multiply3; //xy=494.3333282470703,278.9999542236328
+AudioEffectMultiply      multiply4; //xy=495.3333282470703,162.9999542236328
+AudioAmplifier           amptest;        //xy=537.3333129882812,605.9999389648438
+AudioAmplifier           ampout;         //xy=573.3333129882812,496.9999084472656
+AudioFilterBiquad        biquad2; //xy=662.3333282470703,311.9999542236328
+AudioFilterBiquad        biquad1; //xy=667.3333282470703,165.9999542236328
+AudioOutputI2S           lineout;        //xy=730.3333129882812,635.9999389648438
+AudioRecordQueue         inqueue1;       //xy=828.3333282470703,166.9999542236328
+AudioRecordQueue         inqueue2;       //xy=835.3333282470703,312.9999542236328
+AudioConnection          patchCord1(linein, 0, inmixer, 0);
+AudioConnection          patchCord2(testwave, 0, testoutmixer, 0);
+AudioConnection          patchCord3(testwave, 0, inmixer, 1);
+AudioConnection          patchCord4(sine1, 0, multiply4, 1);
+AudioConnection          patchCord5(sine1, 0, testoutmixer, 1);
+AudioConnection          patchCord6(sine2, 0, multiply3, 1);
+AudioConnection          patchCord7(inmixer, 0, multiply4, 0);
+AudioConnection          patchCord8(inmixer, 0, multiply3, 0);
+AudioConnection          patchCord9(testoutmixer, amptest);
+AudioConnection          patchCord10(outqueue, ampout);
+AudioConnection          patchCord11(multiply3, biquad2);
+AudioConnection          patchCord12(multiply4, biquad1);
+AudioConnection          patchCord13(amptest, 0, lineout, 1);
+AudioConnection          patchCord14(ampout, 0, lineout, 0);
+AudioConnection          patchCord15(biquad2, inqueue2);
+AudioConnection          patchCord16(biquad1, inqueue1);
 // GUItool: end automatically generated code
+
+
 
 
 AudioControlSGTL5000     sgtl5000_1;
@@ -77,38 +97,34 @@ float lockingain = 1.0;
 void toggleOnOff() {
     switch(state) {
     case IDLE:
-      AudioNoInterrupts();
       inqueue1.clear();
       inqueue1.begin();
       inqueue2.clear();
       inqueue2.begin();
-      AudioInterrupts();
       state = RUNNING;
       break;
     case RUNNING:
-      AudioNoInterrupts();
       inqueue1.end();
       inqueue2.end();
       //buffer1.clear();
       //buffer2.clear();
-      AudioInterrupts();
       state = IDLE;
       break;
   }
 }
 
 void toggletest() {
-    AudioNoInterrupts();
     if (testmode){
       testoutmixer.gain(0,0.0);
       testoutmixer.gain(1,1.0);
+      inmixer.gain(1,0.0);
       testmode = false;
     } else {
       testoutmixer.gain(0,1.0);
       testoutmixer.gain(1,0.0);
+      inmixer.gain(1,1.0);
       testmode = true;
     }
-    AudioInterrupts();
 }
 
 Simpletimer timer_ui;
@@ -120,6 +136,20 @@ void ui_callback() {
   buttons->update();
   ui->input();
   ui->draw();
+
+
+  inmixer.gain(0, ui->gains_menu->ingain);
+  //ampsine1.gain(ui->ref_menu->amp);
+  //ampsine2.gain(ui->ref_menu->amp);
+  sine1.amplitude(ui->ref_menu->amp);
+  sine2.amplitude(ui->ref_menu->amp);
+  sine1.frequency(ui->ref_menu->freq);
+  sine2.frequency(ui->ref_menu->freq);
+  //amp1.gain(multgain);
+  //amp2.gain(multgain);
+  amptest.gain(ui->gains_menu->outgain);
+  ampout.gain(ui->gains_menu->outgain);
+  lockingain = ui->gains_menu->lockingain;
 }
 
 void setup(void) {
@@ -133,7 +163,7 @@ void setup(void) {
   //sgtl5000_1.inputSelect(AUDIO_INPUT_LINEIN);
 
   inmixer.gain(1,0.0);
-  testwave.frequency(120);
+  testwave.frequency(60);
   testwave.amplitude(0.5);
   testwave.begin(WAVEFORM_TRIANGLE);
 
@@ -146,14 +176,14 @@ void setup(void) {
   
   inmixer.gain(0,1.0);
   
-  ampsine1.gain(1.0);
-  ampsine2.gain(1.0);
+  //ampsine1.gain(1.0);
+  //ampsine2.gain(1.0);
   testoutmixer.gain(0,0.0);
   testoutmixer.gain(1,1.0);
 
-  amp1.gain(2.0);
-  amp2.gain(2.0);
-  ampout.gain(5.0);
+  //amp1.gain(1.0);
+  //amp2.gain(1.0);
+  ampout.gain(1.0);
 
   biquad1.setLowpass(0, 500, 0.707);
   biquad2.setLowpass(0, 500, 0.707);
@@ -161,6 +191,9 @@ void setup(void) {
   delay(100);
   
   AudioInterrupts();
+
+  ui->runbutton->set_callback(&toggleOnOff);
+  ui->testbutton->set_callback(&toggletest);
 
   u8g2.begin();
 
@@ -174,8 +207,7 @@ elapsedMillis drawtime=0;
 
 
 void loop(void) {
-  timer_blink.run(500);
-  timer_blinkfast.run(50);
+
 
   float lockval = 0.0;
   if ((inqueue1.available() > 1) && (inqueue2.available() > 1)) {
@@ -186,6 +218,7 @@ void loop(void) {
       for (int i = 0;i<128;i++) {
         lockval = lockingain*sqrt(sq((float32_t)buf1[i]) + sq((float32_t)buf2[i]));
         outbuf[i] = round(lockval);
+        outbuf[i] = buf1[i];
       }
       outqueue.playBuffer();
       inqueue1.freeBuffer();
@@ -193,16 +226,8 @@ void loop(void) {
     }
   }
   
+  timer_blink.run(500);
+  timer_blinkfast.run(50);
   timer_ui.run(10);
 
-
-  /*
-  inmixer.gain(0, ingain);
-  ampsine1.gain(sinegain);
-  ampsine2.gain(sinegain);
-  amp1.gain(multgain);
-  amp2.gain(multgain);
-  amptest.gain(outgain);
-  ampout.gain(outgain);
-  */
 }

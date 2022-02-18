@@ -25,7 +25,7 @@ Gains_Menu::Gains_Menu(Widget *parent): Widget(parent)
     lockingainbox->set_value(lockingain);
     lockingainbox->set_pos(x+14,y+10+i*(lockingainbox->get_height()+4)-2);
     i++;
-    outputgainbox = new AccFloatInputBox(this, "Gain", 0.0, 100, 0.1);
+    outputgainbox = new AccFloatInputBox(this, "Output", 0.0, 100, 0.1);
     outputgainbox->set_value(outgain);
     outputgainbox->set_pos(x+14,y+10+i*(outputgainbox->get_height()+4)-2);
     i++;

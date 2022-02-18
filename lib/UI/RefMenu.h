@@ -24,7 +24,7 @@ public:
 protected:
     
     AccFloatInputBox *ampbox;
-    AccFloatInputBox *freqbox;
+    FloatInputBox *freqbox;
     MenuItem *done;    
         
     int active_item;     

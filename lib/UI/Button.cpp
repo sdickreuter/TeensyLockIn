@@ -14,6 +14,10 @@ Button::Button(String label, Widget *parent, void (*callback)() )
     this->callback = callback;
 }
 
+void Button::set_callback(void (*callback)()) {
+    this->callback = callback;
+}
+
 void Button::input(void) 
 {   
     if (buttons->press.fallingEdge()) {
