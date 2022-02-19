@@ -19,7 +19,7 @@ UI::UI(NavButtons *buttons, U8G2 *u8g2)
 
     // create Main Menus       
     main = new Menu(splash);
-    settings = new Menu(splash);
+    settings = new Menu(main);
 
     gains_menu = new Gains_Menu(settings);
     ref_menu = new Ref_Menu(settings); 

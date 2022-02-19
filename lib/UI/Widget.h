@@ -51,6 +51,7 @@ public:
 
     Widget *parent;   
 
+    void (*draw_callback)();
     
 protected:
     NavButtons *buttons;

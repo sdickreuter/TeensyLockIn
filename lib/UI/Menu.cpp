@@ -77,5 +77,7 @@ void Menu::draw(void) {
     u8g2->setFont(u8g2_font_twelvedings_t_all);
     u8g2->setCursor(0,children.get(active_item)->get_y()+1);
     u8g2->print((char) 46);    
+
+    if (this->draw_callback) this->draw_callback();
 }
 

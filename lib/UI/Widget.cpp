@@ -14,6 +14,7 @@ Widget *Widget::is_drawn;
 int Widget::num_widgets;
 
 Widget::Widget(NavButtons *buttons,U8G2 *u8g2) {
+    this->draw_callback = nullptr;
     this->buttons = buttons;
     this->u8g2 = u8g2;
     this->parent = this;   
@@ -23,6 +24,7 @@ Widget::Widget(NavButtons *buttons,U8G2 *u8g2) {
 }
 
  Widget::Widget(Widget *parent) {
+    this->draw_callback = nullptr;
     this->parent = parent;
     this->buttons = parent->buttons;
     this->u8g2 = parent->u8g2;
@@ -91,7 +93,6 @@ void Widget::switch_blinkfast() {
 }
 
 void Widget::draw() {
-
 }
 
 void Widget::input() {
