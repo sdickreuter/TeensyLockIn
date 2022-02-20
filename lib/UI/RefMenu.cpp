@@ -8,7 +8,7 @@
 
 Ref_Menu::Ref_Menu(Widget *parent): Widget(parent)
 {
-    amp = 0.5;
+    amp = 1.0;
     freq = 2000.0;
 
     x = 0;

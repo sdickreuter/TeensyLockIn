@@ -10,6 +10,9 @@
         "typeinfo": "cpp",
         "utility": "cpp",
         "functional": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp"
     }
 }

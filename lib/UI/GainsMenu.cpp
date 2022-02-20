@@ -56,11 +56,11 @@ void Gains_Menu::input(void) {
             break;
         case 1:
             lockingainbox->input();
-            lockingain = inputgainbox->get_value() ; 
+            lockingain = lockingainbox->get_value() ; 
             break;
         case 2:
             outputgainbox->input();
-            outgain = inputgainbox->get_value() ; 
+            outgain = outputgainbox->get_value() ; 
             break;
         case 3:
             if (this->buttons->press.fallingEdge()) {
