@@ -16,23 +16,31 @@ AccFloatInputBox::AccFloatInputBox(Widget *parent, const String label, float min
 void AccFloatInputBox::input() 
 {
     if (buttons->right.risingEdge()) {
-        if (this->value >= 10.0) {
+        if (this->value >= 100.0) {
+            this->step = 10.0;
+        } else if (this->value >= 10.0) {
             this->step = 2.0;
         } else if (this->value >= 1.0) {
             this->step = 1.0;
-        } else if (this->value >= 0.0) {
+        } else if (this->value >= 0.1) {
             this->step = 0.1;
-        }        
+        } else if (this->value >= 0.01) {
+            this->step = 0.01;
+        }          
         value+=step;
     }
     if (buttons->left.risingEdge()) {
-        if (this->value <= 1.0) {
+        if (this->value <= 0.1) {
+            this->step = 0.01;
+        } else if (this->value <= 1.0) {
             this->step = 0.1;
         } else if (this->value <= 10.0) {
             this->step = 1.0;
         } else if (this->value < 100.0) {
-            this->step = 2.0;
-        }      
+            this->step = 2.0;   
+        } else if (this->value < 1000.0) {
+            this->step = 10.0;
+        }   
             value-=step;
 
     }

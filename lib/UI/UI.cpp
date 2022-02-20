@@ -36,13 +36,14 @@ UI::UI(NavButtons *buttons, U8G2 *u8g2)
     main->add_Widget(testbutton);
     main->add_MenuItem("Settings",settings);
     main->add_MenuItem("Splash",splash);
-    main->add_MenuItem("Splash2",splash);
-    main->add_MenuItem("Splash3",splash);
-
 
     settings->add_MenuItem("Set Gains",gains_menu);
     settings->add_MenuItem("Set Reference",ref_menu);
+    filterinputbox = new AccFloatInputBox(settings,"Filter", 0.01,1.0,0.01);
+    filterinputbox->set_value(0.05);
+    settings->add_Widget(filterinputbox);
     settings->add_Widget(new Button("Save Settings", settings, &donothing));
+
     settings->add_MenuItem("Back",main);
 
 

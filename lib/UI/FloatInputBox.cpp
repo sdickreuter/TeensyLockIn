@@ -9,12 +9,12 @@
 FloatInputBox::FloatInputBox(Widget *parent, const String label, float min, float max, float step)
     : InputBox<float>(parent, label, min, max, step) 
 {
-    precision=1;
+    precision=2;
 }
 
 void FloatInputBox::draw(void) 
 {    
-    u8g2->setCursor(x+dx, y+dy);
+    u8g2->setCursor(get_x(), get_y());
         
     u8g2->setFont(u8g2font);
     
@@ -33,7 +33,7 @@ void FloatInputBox::draw(void)
         count++;
     }
 
-    u8g2->setCursor(x+(width - x -(count*fontwidth)),y);
+    u8g2->setCursor(get_x()+(width - get_x() -(count*fontwidth)),get_y());
     
     u8g2->print(buf);    
 }

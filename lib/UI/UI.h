@@ -33,6 +33,7 @@ class UI {
 
     ToggleButton *runbutton;
     ToggleButton *testbutton;
+    AccFloatInputBox *filterinputbox;
 
   private:
 

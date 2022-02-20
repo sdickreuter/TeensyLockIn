@@ -17,7 +17,7 @@ Gains_Menu::Gains_Menu(Widget *parent): Widget(parent)
             
     active_item = 0;
     int i = 0;    
-    inputgainbox = new AccFloatInputBox(this, "Input", 0.0, 100, 0.1);
+    inputgainbox = new AccFloatInputBox(this, "Input", 0.0, 1000, 0.1);
     inputgainbox->set_value(ingain);
     inputgainbox->set_pos(x+14,y+10+i*(inputgainbox->get_height()+4)-2);
     i++;
@@ -31,7 +31,7 @@ Gains_Menu::Gains_Menu(Widget *parent): Widget(parent)
     i++;
 
 
-    
+
     done = new MenuItem("Done", this);     
     done->set_pos(x+14,y+10+i*(done->get_height()+4)-2);
     //done->set_target(parent);
