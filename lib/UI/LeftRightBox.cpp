@@ -39,7 +39,7 @@ boolean LeftRightBox::is_decreased() {
 }
 
 void LeftRightBox::draw() {
-    u8g2->setCursor(x, y);
+    u8g2->setCursor(get_x(), get_y());
         
     u8g2->setFont(u8g2_font_6x10_mf);
     
@@ -47,7 +47,7 @@ void LeftRightBox::draw() {
 
     u8g2->setFont(u8g2_font_cu12_h_symbols);
     
-    u8g2->setCursor(x+32,y);
+    u8g2->setCursor(get_x()+32,get_y());
     
     char buf[3];
     buf[0] = indicators[0];

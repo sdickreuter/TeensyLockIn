@@ -29,6 +29,9 @@ public:
     void set_width(int width);
 
     void set_pos(int x, int y);
+    void set_dx(int dx);
+    void set_dy(int dy);
+
     int get_x();
     int get_y();    
     
@@ -53,11 +56,13 @@ public:
 
     void (*draw_callback)();
     
+
 protected:
     NavButtons *buttons;
     U8G2 *u8g2; 
        
     int x,y;
+    int dx = 0,dy = 0;
     int height,width;
     const uint8_t* u8g2font;
     int fontheight, fontwidth;

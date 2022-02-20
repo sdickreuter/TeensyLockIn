@@ -36,6 +36,9 @@ UI::UI(NavButtons *buttons, U8G2 *u8g2)
     main->add_Widget(testbutton);
     main->add_MenuItem("Settings",settings);
     main->add_MenuItem("Splash",splash);
+    main->add_MenuItem("Splash2",splash);
+    main->add_MenuItem("Splash3",splash);
+
 
     settings->add_MenuItem("Set Gains",gains_menu);
     settings->add_MenuItem("Set Reference",ref_menu);

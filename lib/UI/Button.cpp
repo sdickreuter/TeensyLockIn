@@ -27,7 +27,7 @@ void Button::input(void)
 
 void Button::draw(void) 
 {    
-    u8g2->setCursor(x, y);
+    u8g2->setCursor(x+dx, y+dy);
         
     u8g2->setFont(u8g2_font_6x10_mf);
     

@@ -14,7 +14,7 @@ IntInputBox::IntInputBox(Widget *parent, const String label, int min, int max, i
 
 void IntInputBox::draw(void) 
 {    
-    u8g2->setCursor(x, y);
+    u8g2->setCursor(get_x(), get_y());
         
     u8g2->setFont(u8g2font);
     
@@ -22,7 +22,7 @@ void IntInputBox::draw(void)
     
     int offset = numDigits(value);
     
-    u8g2->setCursor(x+(128 - x -(offset*fontwidth)),y);
+    u8g2->setCursor(get_x()+(128 - get_x() -(offset*fontwidth)),get_y());
     
     u8g2->printf("%d",value);    
 }

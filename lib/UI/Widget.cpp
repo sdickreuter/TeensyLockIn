@@ -47,6 +47,13 @@ void Widget::set_width(int width) {
     this->width = width;
 }
 
+void Widget::set_dx(int dx) {
+    this->dx = dx;
+}
+
+void Widget::set_dy(int dy) {
+    this->dy = dy;
+}
 
 void Widget::set_pos(int x, int y) {
     this->x = x;
@@ -54,11 +61,11 @@ void Widget::set_pos(int x, int y) {
 }
 
 int Widget::get_x() {
-    return x;
+    return x+dx;
 }
 
 int Widget::get_y() {
-    return y;
+    return y+dy;
 } 
 
 int Widget::get_height() {

@@ -29,6 +29,9 @@ Gains_Menu::Gains_Menu(Widget *parent): Widget(parent)
     outputgainbox->set_value(outgain);
     outputgainbox->set_pos(x+14,y+10+i*(outputgainbox->get_height()+4)-2);
     i++;
+
+
+    
     done = new MenuItem("Done", this);     
     done->set_pos(x+14,y+10+i*(done->get_height()+4)-2);
     //done->set_target(parent);

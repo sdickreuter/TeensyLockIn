@@ -24,12 +24,14 @@ public:
     
     void add_MenuItem(String label, Widget *target);
     void add_Widget(Widget *widget);
- 
 
-private:
+
+protected:
     int num_items;
     int active_item; 
     
+    int y_scroll = 0;
+
     LinkedList<Widget*> children; 
 
 };

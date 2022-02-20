@@ -60,22 +60,41 @@ void Menu::claim_input() {
 
 void Menu::input(void) {
     
-    if (buttons->up.risingEdge()) active_item--;
-    if (buttons->down.risingEdge()) active_item++;
+    if (buttons->up.risingEdge()) {
+        if (active_item > 0) {
+            active_item--;
+            if (active_item >= 3) {
+                y_scroll += 10;
+            }
+        } else {
+            active_item = num_items-1;
+            y_scroll = (num_items-4)*-10;
+        }
+    }
+    if (buttons->down.risingEdge()) {
+        if (active_item < (num_items-1)) {
+            active_item++;
+            if (active_item >= 4) {
+                y_scroll -= 10;
+            }
+        } else {
+            active_item = 0;
+            y_scroll = 0;
+        }
+    } 
     
-    if (active_item < 0) active_item = num_items-1;
-    active_item %= num_items;
-  
     children.get(active_item)->input();        
 }
 
 void Menu::draw(void) {
+
     for (int i = 0; i<num_items; i++) {
+        children.get(i)->set_dy(this->y_scroll);
         children.get(i)->draw();
     } 
 
     u8g2->setFont(u8g2_font_twelvedings_t_all);
-    u8g2->setCursor(0,children.get(active_item)->get_y()+1);
+    u8g2->setCursor(get_x(),children.get(active_item)->get_y()+1);
     u8g2->print((char) 46);    
 
     if (this->draw_callback) this->draw_callback();

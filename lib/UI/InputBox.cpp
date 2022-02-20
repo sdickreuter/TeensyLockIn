@@ -55,7 +55,7 @@ void InputBox<T>::input(void)
 template <class T>
 void InputBox<T>::draw(void) 
 {    
-    u8g2->setCursor(x, y);
+    u8g2->setCursor(x+dx, y+dy);
         
     u8g2->setFont(u8g2font);
     

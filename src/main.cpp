@@ -354,39 +354,11 @@ void loop(void) {
           arm_mult_f32(buf2,sin2,buf2,AUDIO_BLOCK_SAMPLES);
         }
         
-        /*for (int i = 0;i<AUDIO_BLOCK_SAMPLES;i++) {
-          outbuf[i] = (int16_t) round(buf1[i]*lockingain*1.0);
-        }*/
-
-        //arm_fir_f32(&fir1,buf1,filt1,AUDIO_BLOCK_SAMPLES);
-        //arm_fir_f32(&fir2,buf2,filt2,AUDIO_BLOCK_SAMPLES);
-        /*for (int i = 0;i<AUDIO_BLOCK_SAMPLES;i++) {
-          outbuf[i] = (int16_t) round(filt1[i]*lockingain*1.0);
-        }*/
-
 
         for (int i = 0;i<AUDIO_BLOCK_SAMPLES;i++) {
           filt1[i] = filter1.filter(buf1[i]);
           filt2[i] = filter2.filter(buf2[i]);
         }
-        /*for (int i = 0;i<AUDIO_BLOCK_SAMPLES;i++) {
-          outbuf[i] = (int16_t) round(filt1[i]*lockingain*1.0);
-          //outbuf[i] = filter1.filter(buf1[i]);
-        }*/
-
-        /*for (int i = 0;i<AUDIO_BLOCK_SAMPLES;i++) {
-          filt1[i] = (buf[i] - last1)*filtcoef + last1; 
-          last1 = filt1[i];
-          filt1[i] = (buf[i] - last1)*filtcoef + last2; 
-          last1 = filt1[i];
-        }*/
-
-        /*for (int i = 0;i<AUDIO_BLOCK_SAMPLES;i++) {
-          filt1[i] = (last1 - buf1[i])*0.1 + last1; 
-          last1 = filt1[i];
-          outbuf[i] = (int16_t) round(filt1[i]*lockingain);
-        }*/
-        
         
         // buf1 = buf1^2
         arm_mult_f32(filt1,filt1,buf1,AUDIO_BLOCK_SAMPLES);
@@ -397,9 +369,7 @@ void loop(void) {
         
 
         for (int i = 0;i<AUDIO_BLOCK_SAMPLES;i++) {
-          //arm_sqrt_f32(sq(filt1[i]) + sq(filt2[i]), &res);
           arm_sqrt_f32(sum[i], &res);
-          //res = filt2[i];
           outbuf[i] = (int16_t) round(res*lockingain*16384.0);
         }
         inqueue.freeBuffer();
